@@ -7,10 +7,5 @@
     { flakelight, ... }@inputs:
     flakelight ./. {
       inherit inputs;
-      devShell = pkgs: {
-        packages = with pkgs; [
-          #insert packages here
-        ];
-      };
     };
 }
