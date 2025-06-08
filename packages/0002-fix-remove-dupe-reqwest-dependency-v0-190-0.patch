@@ -1,0 +1,60 @@
+From 9e4320344ee3b0f6f617dc13bcce785090c6a264 Mon Sep 17 00:00:00 2001
+From: rencire <546296+rencire@users.noreply.github.com>
+Date: Sat, 7 Jun 2025 18:36:45 -0700
+Subject: [PATCH] fix: remove dupe reqwest dependency
+
+---
+ Cargo.lock | 37 -------------------------------------
+ 1 file changed, 37 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index abf5705a78..c10873d3f1 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -13154,43 +13154,6 @@ dependencies = [
+  "winreg 0.50.0",
+ ]
+ 
+-[[package]]
+-name = "reqwest"
+-version = "0.12.15"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d19c46a6fdd48bc4dab94b6103fccc55d34c67cc0ad04653aad4ea2a07cd7bbb"
+-dependencies = [
+- "base64 0.22.1",
+- "bytes 1.10.1",
+- "futures-channel",
+- "futures-core",
+- "futures-util",
+- "http 1.3.1",
+- "http-body 1.0.1",
+- "http-body-util",
+- "hyper 1.6.0",
+- "hyper-util",
+- "ipnet",
+- "js-sys",
+- "log",
+- "mime",
+- "once_cell",
+- "percent-encoding",
+- "pin-project-lite",
+- "serde",
+- "serde_json",
+- "serde_urlencoded",
+- "sync_wrapper 1.0.2",
+- "tokio",
+- "tower 0.5.2",
+- "tower-service",
+- "url",
+- "wasm-bindgen",
+- "wasm-bindgen-futures",
+- "web-sys",
+- "windows-registry 0.4.0",
+-]
+-
+ [[package]]
+ name = "reqwest"
+ version = "0.12.15"
+-- 
+2.49.0
+
