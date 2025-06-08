@@ -1,26 +1,32 @@
-# Note
-To expose a default package, create a `_default.nix`.
+# About
+This is a flake to 
 
-e.g.
-```
-packages/
-├── _default.nix  # This becomes packages.${system}.default
-  
-```
 
-e.g. packages/_default.nix
+# Quickstart
+
+Import flake into your flake:
+
+e.g. flakelight flake.nix
 ```nix
 {
-  lib,
-  rustPlatform,
-  ...
-}
-in
-rustPlatform.buildRustPackage (finalAttrs: {
-  pname = "zed-editor-latest";
-  version = "0.190.3";
-  # Rest of package definition
-  ...
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  inputs.flakelight.url = "github:accelbread/flakelight";
+  inputs.zed-editor-pre.url = "github:rencire/zed-editor-prerelease-flake";
+
+  outputs =
+    { flakelight, ... }@inputs:
+    flakelight ./. {
+      inherit inputs;
+      devShell = pkgs: {
+        packages = with pkgs; [
+          # Add zed-editor package here
+          inputs'.zed-editor-pre.packages.default
+        ];
+      };
+    };
 }
 
 ```
+
+
+  
